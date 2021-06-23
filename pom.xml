@@ -103,6 +103,14 @@
             <systemPath>${project.basedir}/src/libs/wssamples-1.0.0.jar</systemPath>
         </dependency>
 
+        <dependency>
+            <groupId>com.vmware</groupId>
+            <artifactId>api-client-all</artifactId>
+            <version>1.8</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/libs/vcops-suiteapi-client-1.8-all.jar</systemPath>
+        </dependency>
+
     </dependencies>
 
     <build>

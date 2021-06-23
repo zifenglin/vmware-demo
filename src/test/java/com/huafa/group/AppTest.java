@@ -1,17 +1,21 @@
 package com.huafa.group;
 
-import static org.junit.Assert.assertTrue;
-
 import com.vmware.connection.BasicConnection;
-import com.vmware.connection.ConnectedVimServiceBase;
-import com.vmware.connection.SsoConnection;
-import com.vmware.general.Connect;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Unit test for simple App.
  */
 public class AppTest {
+
+    public static final List<String> hostSystemAttributesArr = new ArrayList<>();
+
     /**
      * Rigorous Test :-)
      */
@@ -20,25 +24,23 @@ public class AppTest {
         assertTrue(true);
     }
 
-    public static void main(String[] args) {
-//        BasicConnection connection = new BasicConnection();
-//        connection.setUrl("https://172.16.34.111:443/sdk");
-//        connection.setUsername("admin");
-//        connection.setPassword("P@ssw0rd");
-//
-//        System.out.println("bbb");
-//        System.out.println(connection.isConnected());
-//        System.out.println(connection.connect().getServiceContent().getRootFolder());
-//        System.out.println(connection.isConnected());
-        System.out.println("aaa");
+    public static void main(String[] args) throws Exception {
+
 
         BasicConnection ss = new BasicConnection();
-        ss.setUrl("https://172.16.34.111:443/sdk");
-        ss.setUsername("admin");
-        ss.setPassword("P@ssw0rd");
-        ss.connect();
-        System.out.println("bbb");
+        ss.setUrl("https://172.16.30.10:443/sdk");
+        ss.setUsername("cmdb@vsphere.local");
+        ss.setPassword("9z&EJDXsZ2uo6s4U");
+
+        VmServerClient client = new VmServerClient();
+        client.setConnection(ss);
+        client.connect();
+           List<Map> list1 = client.getVmProductDetails();
 
 
+       // client.getHostSystemDetail();
+        client.disconnect();
     }
+
+
 }
